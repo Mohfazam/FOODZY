@@ -1,9 +1,16 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authHandler = void 0;
 const express_1 = require("express");
 const client_1 = require("@prisma/client");
 const emailService_1 = require("../utils/emailService");
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const JWT_SECRET = process.env.JWT_SECRET;
 const prisma = new client_1.PrismaClient();
 exports.authHandler = (0, express_1.Router)();
 exports.authHandler.get("/health", (req, res) => {
@@ -51,8 +58,9 @@ exports.authHandler.post("/verify-otp", async (req, res) => {
         if (new Date() > existingOtp.expiresAt) {
             return res.status(400).json({ message: "OTP has expired" });
         }
+        const token = jsonwebtoken_1.default.sign({ email }, JWT_SECRET, { expiresIn: "4h" });
         await prisma.oTP.delete({ where: { id: existingOtp.id } });
-        return res.status(200).json({ message: "OTP verified successfully" });
+        return res.status(200).json({ message: "OTP verified successfully", token });
     }
     catch (error) {
         return res.status(500).json({ message: "Something went wrong" });

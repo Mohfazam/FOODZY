@@ -1,6 +1,12 @@
 import { Router } from "express";
 import { PrismaClient } from "@prisma/client";
 import { sendOtpEmail } from "../utils/emailService";
+import  jwt  from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const prisma = new PrismaClient();
 
@@ -62,10 +68,10 @@ authHandler.post("/verify-otp", async (req, res) => {
             return res.status(400).json({ message: "OTP has expired" });
         }
 
-
+        const token = jwt.sign({email}, JWT_SECRET!, {expiresIn: "4h"});
         
         await prisma.oTP.delete({ where: { id: existingOtp.id } });
-        return res.status(200).json({ message: "OTP verified successfully" });
+        return res.status(200).json({ message: "OTP verified successfully", token });
 
 
     } catch(error){

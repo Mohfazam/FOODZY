@@ -6,10 +6,106 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  orders    Order[]
+}
+
+model OTP {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  products  Product[]
+}
+
+model Product {
+  id           String     @id @default(cuid())
+  name         String
+  description  String?
+  basicInfo    String?
+  image        String?
+  brand        String?
+  flavour      String?
+  dietType     String?
+  weight       String?
+  speciality   String?
+  ingredients  String?
+  items        Int?
+  price        Float
+  rating       Float?     @default(0)
+  reviewsCount Int?       @default(0)
+  stock        Int?       @default(0)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  categoryId   String?
+  category     Category?  @relation(fields: [categoryId], references: [id])
+  reviews      Review[]
+  orderItems   OrderItem[]
+}
+
+
+model Review {
+  id        String   @id @default(cuid())
+  name      String
+  review    String
+  rating    Float
+  createdAt DateTime @default(now())
+
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  totalAmount Float
+  status      String      @default("PENDING")
+
+  // Shipping details
+  firstName   String
+  lastName    String
+  address     String
+  city        String
+  postCode    String
+  country     String
+  regionState String
+
+  createdAt   DateTime    @default(now())
+
+  user        User        @relation(fields: [userId], references: [id])
+  orderItems  OrderItem[]
+}
+
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  productId String
+  quantity  Int       @default(1)
+  price     Float
+
+  order     Order     @relation(fields: [orderId], references: [id])
+  product   Product   @relation(fields: [productId], references: [id])
 }

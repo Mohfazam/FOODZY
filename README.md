@@ -9,28 +9,6 @@
   
 ## Backend
 
-### 2. Database (Prisma Models)
-
-**User**
-
-- [ ] id, name, email, createdAt
-
-**OTP**
-
-- [ ] id, email, code, expiresAt
-
-**Product**
-
-- [ ] id, name, description, price, imageUrl, stock
-
-**Order**
-
-- [ ] id, userId, totalAmount, createdAt
-
-**OrderItem**
-
-- [ ] id, orderId, productId, quantity, price
-
 ### 3. Features & Endpoints
 
 **🧍‍♂️ Auth (Email + OTP)**

@@ -29,7 +29,9 @@ exports.productHandler.post("/add", async (req, res) => {
             },
         });
         if (existingProduct) {
-            return res.status(409).json({ message: "Product already exists in this category" });
+            return res
+                .status(409)
+                .json({ message: "Product already exists in this category" });
         }
         const newProduct = await prisma.product.create({
             data: {
@@ -58,6 +60,76 @@ exports.productHandler.post("/add", async (req, res) => {
     catch (error) {
         console.error("Error adding product:", error);
         return res.status(500).json({ message: "Something went wrong" });
+    }
+});
+exports.productHandler.get("/allProducts", async (req, res) => {
+    try {
+        const { category, search, sort, limit } = req.query;
+        const filters = {};
+        if (category) {
+            filters.category = {
+                name: { equals: String(category), mode: "insensitive" },
+            };
+        }
+        if (search) {
+            filters.OR = [
+                { name: { contains: String(search), mode: "insensitive" } },
+                { description: { contains: String(search), mode: "insensitive" } },
+            ];
+        }
+        const orderBy = {};
+        if (sort === "price_asc")
+            orderBy.price = "asc";
+        else if (sort === "price_desc")
+            orderBy.price = "desc";
+        else if (sort === "rating_desc")
+            orderBy.rating = "desc";
+        const take = limit ? parseInt(String(limit)) : 50;
+        const products = await prisma.product.findMany({
+            where: filters,
+            orderBy,
+            take,
+            include: { category: true },
+        });
+        return res.status(200).json({ products });
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Failed to fetch products" });
+    }
+});
+exports.productHandler.get("/product/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const product = await prisma.product.findUnique({
+            where: { id },
+            include: {
+                category: true,
+                reviews: true,
+            },
+        });
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        return res.status(200).json({ product });
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Failed to fetch product" });
+    }
+});
+exports.productHandler.get("/categories", async (req, res) => {
+    try {
+        const categories = await prisma.category.findMany({
+            include: {
+                products: true,
+            },
+        });
+        return res.status(200).json({ categories });
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Failed to fetch categories" });
     }
 });
 //# sourceMappingURL=index.js.map

@@ -1,4 +1,4 @@
-import { ChevronDown, Phone, Search, UserRound  } from "lucide-react"
+import { ChevronDown, Phone, Search, UserRound, Heart, ShoppingCart  } from "lucide-react"
 
 export const Navbar = () => {
   return (
@@ -87,13 +87,25 @@ export const Navbar = () => {
               />
             </div>
 
-            <button className="w-[45px] h-[45px] bg-[#F53E32] flex justify-center items-center"> <Search className="text-white" size={15} /></button>
+            <button className="w-[45px] h-[45px] bg-[#F53E32] flex justify-center items-center rounded-tr-[5px] rounded-br-[5px]"> <Search className="text-white" size={15} /></button>
           </div>
-          <div>
-            <div>
-              <UserRound />
-              <span>Account</span>
+          <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-2 text-[#000000]">
+              <UserRound size={21}/>
+              <span className="text-[15px] leading-[15px] font-medium font-poppins">Account</span>
             </div>
+
+            <div className="flex justify-center items-center gap-2 text-[#000000]">
+              <Heart size={21}/>
+              <span className="text-[15px] leading-[15px] font-medium font-poppins">Wishlist</span>
+            </div>
+
+            <div className="flex justify-center items-center gap-2 text-[#000000]">
+              <ShoppingCart size={21}/>
+              <span className="text-[15px] leading-[15px] font-medium font-poppins">Cart</span>
+            </div>
+
+            
           </div>
         </div>
       </div>

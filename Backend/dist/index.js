@@ -8,12 +8,14 @@ const cors_1 = __importDefault(require("cors"));
 const index_1 = require("./Auth/index");
 const index_2 = require("./Products/index");
 const Feedback_1 = require("./Feedback");
+const index_3 = require("./Order/index");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use("/api/v1/auth", index_1.authHandler);
 app.use("/api/v1/products", index_2.productHandler);
 app.use("/api/v1/feedback", Feedback_1.feedBackHandler);
+app.use("/api/v1/order", index_3.ordersHandler);
 app.listen(4000, () => {
     console.log("Server running on the port 4000");
 });

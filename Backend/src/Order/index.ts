@@ -79,6 +79,42 @@ ordersHandler.post("/place", verifyToken, async (req, res) => {
   }
 });
 
+ordersHandler.get("/fetch", verifyToken, async (req, res) => {
+  try {
+    const { email } = (req as any).user;
+
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const orders = await prisma.order.findMany({
+      where: { userId: user.id },
+      include: {
+        orderItems: {
+          include: {
+            product: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return res.status(200).json({ orders });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+});
+
+
+
+
 
 
 

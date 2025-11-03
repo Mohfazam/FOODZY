@@ -1,11 +1,11 @@
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Phone } from "lucide-react"
 
 export const Navbar = () => {
   return (
     <div>
       <div className="bg-[#FFFFFF] shadow-[0_1px_4px_0_#0000001A]">
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-          <div>
+          <div className="flex items-center">
             <div className="w-full flex justify-between">
               <div className="w-[35px] h-[35px] rounded-[5px] border border-[#E9E9E9] flex justify-center items-center">
                 <img src="menu.svg" alt="Menu" />
@@ -35,7 +35,9 @@ export const Navbar = () => {
                 
 
               </div>
-              <div>Right</div>
+              <div>
+                <Phone />
+              </div>
             </div>
           </div>
         </div>

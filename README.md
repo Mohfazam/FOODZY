@@ -54,3 +54,8 @@
 | `/api/products/:id` | Products | Fetch a single product by ID |
 | `/api/orders` | Orders | Fetch all orders of the logged-in user |
 | `/api/orders/:id` | Orders | Fetch details of a specific order |
+
+
+### TODO
+
+- [] **Hero Newsletter:** In the hero section the user should be able to enter their email address then an email for confirmation should be sent saying "your subscribed to the newsletter"  

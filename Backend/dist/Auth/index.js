@@ -46,23 +46,28 @@ exports.authHandler.post("/verify-otp", async (req, res) => {
     if (!email)
         return res.status(400).json({ message: "Email is required" });
     if (!otp)
-        return res.status(400).json({ message: "otp is required" });
+        return res.status(400).json({ message: "OTP is required" });
     try {
         const existingOtp = await prisma.oTP.findFirst({ where: { email } });
-        if (!existingOtp) {
+        if (!existingOtp)
             return res.status(400).json({ message: "Invalid email" });
-        }
-        if (existingOtp.code != otp) {
+        if (existingOtp.code != otp)
             return res.status(400).json({ message: "Invalid OTP" });
-        }
-        if (new Date() > existingOtp.expiresAt) {
+        if (new Date() > existingOtp.expiresAt)
             return res.status(400).json({ message: "OTP has expired" });
+        let user = await prisma.user.findUnique({ where: { email } });
+        if (!user) {
+            user = await prisma.user.create({ data: { email } });
         }
-        const token = jsonwebtoken_1.default.sign({ email }, JWT_SECRET, { expiresIn: "4h" });
         await prisma.oTP.delete({ where: { id: existingOtp.id } });
-        return res.status(200).json({ message: "OTP verified successfully", token });
+        const token = jsonwebtoken_1.default.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: "4h" });
+        return res.status(200).json({
+            message: "OTP verified successfully",
+            token,
+        });
     }
     catch (error) {
+        console.error(error);
         return res.status(500).json({ message: "Something went wrong" });
     }
 });

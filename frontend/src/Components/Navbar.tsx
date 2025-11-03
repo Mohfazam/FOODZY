@@ -7,7 +7,7 @@ export const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center">
             <div className="w-full flex justify-between items-center gap-2">
-              <div className="w-[35px] h-[35px] rounded-[5px] border border-[#E9E9E9] flex justify-center items-center flex-shrink-0">
+              <div className="w-[35px] h-[35px] rounded-[5px] border border-[#E9E9E9] flex justify-center items-center shrink-0">
                 <img src="menu.svg" alt="Menu" />
               </div>
 
@@ -87,7 +87,7 @@ export const Navbar = () => {
               />
             </div>
 
-            <button className="w-[45px] h-[45px] bg-[#F53E32] flex justify-center items-center rounded-tr-[5px] rounded-br-[5px] flex-shrink-0"> <Search className="text-white" size={15} /></button>
+            <button className="w-[45px] h-[45px] bg-[#F53E32] flex justify-center items-center rounded-tr-[5px] rounded-br-[5px] shrink-0"> <Search className="text-white" size={15} /></button>
           </div>
           <div className="flex justify-center items-center gap-2 sm:gap-4 shrink-0">
             <div className="flex justify-center items-center gap-1 sm:gap-2 text-[#000000]">

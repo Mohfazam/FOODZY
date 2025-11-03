@@ -5,6 +5,11 @@ const express_1 = require("express");
 const client_1 = require("@prisma/client");
 exports.productHandler = (0, express_1.Router)();
 const prisma = new client_1.PrismaClient();
+exports.productHandler.get("/health", (req, res) => {
+    return res.status(200).json({
+        Message: "Products route up and running"
+    });
+});
 exports.productHandler.post("/add", async (req, res) => {
     try {
         const { name, description, basicInfo, image, brand, flavour, dietType, weight, speciality, ingredients, items, price, stock, categoryName, } = req.body;

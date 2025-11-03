@@ -4,6 +4,12 @@ import { PrismaClient } from "@prisma/client";
 export const productHandler = Router();
 const prisma = new PrismaClient();
 
+productHandler.get("/health", (req, res) => {
+    return res.status(200).json({
+        Message: "Products route up and running"
+    });
+});
+
 productHandler.post("/add", async (req, res) => {
   try {
     const {

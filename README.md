@@ -2,10 +2,11 @@
 
 ## Road Map
 
-- [ ] Day 0 (Nov 2): Basic structure setup, backend & frontend init, Prisma schema, GitHub repo setup
-- [ ] Day 1 (Nov 3): Backend APIs (products, OTP auth), email setup, frontend product list & cart
-- [ ] Day 2 (Nov 4): Checkout flow, order creation, email confirmation, OTP verification integration
-- [ ] Day 3 (Nov 5): UI polish (Figma match), code cleanup, deployment (frontend + backend), README.md
+- [x] **Day 0 (Nov 2):** Project structure setup, backend & frontend initialization, Prisma schema design, GitHub repo setup  
+- [x] **Day 1 (Nov 3):** Complete backend — OTP auth, products, categories, orders, reviews, email confirmation setup, Postman testing, deployment  
+- [ ] **Day 2 (Nov 4):** Frontend development — product listing, product details page, cart management with Zustand, checkout flow integration with backend  
+- [ ] **Day 3 (Nov 5):** Final touches — pixel-perfect UI (match Figma), OTP verification flow on frontend, code cleanup, deployment (frontend), and detailed README.md  
+
   
 ## Backend
 

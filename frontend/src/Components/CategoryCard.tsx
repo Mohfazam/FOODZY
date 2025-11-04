@@ -18,7 +18,7 @@ const CategoryCard = ({text, image}: CategoryCardProps) => {
           <span className="w-[203px] text-[24px] leading-6 text-[#253D4E] font-semibold">
             {text}
           </span>
-          <button className="bg-[#F53E32] text-white rounded-sm w-[103px] h-8 px-5 py-2 font-medium text-[12px] leading-[15px]">
+          <button className="bg-[#F53E32] text-white rounded-sm w-[103px] h-8 px-5 py-2 font-medium text-[12px] leading-[15px] hover:cursor-pointer hover:bg-[#f23224]">
             Shop Now
           </button>
         </div>

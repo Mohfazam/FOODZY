@@ -39,6 +39,12 @@ model Category {
   products  Product[]
 }
 
+enum ProductFlag {
+  HOT
+  SALE
+  NEW
+}
+
 model Product {
   id           String     @id @default(cuid())
   name         String
@@ -63,7 +69,11 @@ model Product {
   category     Category?  @relation(fields: [categoryId], references: [id])
   reviews      Review[]
   orderItems   OrderItem[]
+
+  flag         ProductFlag? @default(SALE)  
+  discount     Int?                       
 }
+
 
 
 model Review {

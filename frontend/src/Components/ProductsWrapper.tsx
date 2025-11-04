@@ -1,33 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/lib/api";
+import { useProductStore } from "@/Store/Store";
 import PopularProducts from "./PopularProducts";
-
-interface Product {
-  id: string;
-  name: string;
-  description?: string;
-  basicInfo?: string;
-  image?: string;
-  brand?: string;
-  flavour?: string;
-  dietType?: string;
-  weight?: string;
-  speciality?: string;
-  ingredients?: string;
-  items: number;
-  price: number;
-  rating?: number;
-  reviewsCount?: number;
-  stock?: number;
-  createdAt: string;
-  updatedAt: string;
-  category?: {
-    id: string;
-    name: string;
-  };
-}
 
 const ProductsWrapper = () => {
   const { data, isLoading, error } = useQuery({
@@ -35,12 +12,32 @@ const ProductsWrapper = () => {
     queryFn: fetchProducts,
   });
 
-  if (isLoading) return <p>Loading products...</p>;
-  if (error) return <p>Failed to load products</p>;
+  const setProducts = useProductStore((state) => state.setProducts);
 
-  const products: Product[] = data?.data?.products ?? [];
+  useEffect(() => {
+    console.log("Query data:", data);
+    if (data) {
+      setProducts(data);
+    }
+  }, [data, setProducts]);
 
-  return <PopularProducts products={products} />;
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <p className="text-lg text-gray-600">Loading products...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center py-12">
+        <p className="text-lg text-red-600">Failed to load products. Please try again.</p>
+      </div>
+    );
+  }
+
+  return <PopularProducts />;
 };
 
 export default ProductsWrapper;

@@ -1,25 +1,38 @@
-import { ProductCard } from './ProductCard'
+import { ProductCard } from './ProductCard';
+import { useProductStore } from '@/Store/Store';
 
-const PopularProducts = ({ products }: { products: any[] }) => {
+const PopularProducts = () => {
+    const products = useProductStore((state) => state.products);
+
+    console.log("Products inside PopularProducts component:", products);
+
     return (
         <div className="w-full px-4 py-4 overflow-hidden">
             <div className="max-w-[1585.97px] mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-items-center">
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
-                    <ProductCard />
+                    {products?.length > 0 ? (
+                        products.map((product) => (
+                            <ProductCard
+                                key={product.id}
+                                name={product.name}
+                                image={product.image}
+                                flag={product.flag}
+                                discount={product.discount}
+                                category={product.category?.name || "Uncategorized"}
+                                rating={product.rating}
+                                brand={product.brand}
+                                price={product.price}
+                            />
+                        ))
+                    ) : (
+                        <div className="col-span-full text-center py-12">
+                            <p className="text-gray-400 text-lg">No products available.</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default PopularProducts
+export default PopularProducts;

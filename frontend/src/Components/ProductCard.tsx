@@ -1,8 +1,19 @@
 import { Star, ShoppingCart } from 'lucide-react';
 
+interface ProductCardProps{
+    name: String;
+    image: String;
+    type: "HOT" | "SALE" | "NEW" | Number;
+    category: String;
+    rating: Number;
+    brand: String;
+    actualPrice: Number;
+    price: Number 
+}
+
 export const ProductCard = () => {
     return (
-        <div className="w-[298px] h-[465px] rounded-2xl border border-[#ECECEC]">
+        <div className="w-[280px] h-[465px] rounded-2xl border border-[#ECECEC]">
             <div className="w-full h-full flex flex-col relative">
                 <div className="w-[296px] h-[271px] flex items-center justify-center">
                     <img src="/Product1.svg" alt="Product Image" className="object-cover" />

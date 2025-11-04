@@ -3,9 +3,22 @@ import { ProductCard } from './ProductCard'
 
 const PopularProducts = () => {
   return (
-    <div className='max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8'>
-        <ProductCard />
-    </div>
+    <div className="w-full px-4 py-4">
+  <div className="grid grid-cols-5 grid-rows-2 gap-4 justify-center">
+    <ProductCard />
+    <ProductCard />
+    <ProductCard />
+    <ProductCard />
+    <ProductCard />
+
+    <ProductCard />
+    <ProductCard />
+    <ProductCard />
+    <ProductCard />
+    <ProductCard />
+  </div>
+</div>
+
   )
 }
 

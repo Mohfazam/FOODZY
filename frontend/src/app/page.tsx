@@ -1,8 +1,9 @@
-import CategoryCard from "@/Components/CategoryCard";
 import CategoryGrid from "@/Components/CategoryGrid";
 import Hero from "@/Components/Hero";
 import { Navbar } from "@/Components/Navbar"
-import PopularProducts from "@/Components/PopularProducts";
+import { useQuery } from '@tanstack/react-query'
+import { fetchProducts } from '@/lib/api'
+import ProductsWrapper from "@/Components/ProductsWrapper";
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <CategoryGrid />
-      <PopularProducts />
+      <ProductsWrapper />
     </div>
   );
 }

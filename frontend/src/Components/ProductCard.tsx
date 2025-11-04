@@ -3,9 +3,13 @@ import { Star, ShoppingCart } from 'lucide-react';
 export const ProductCard = () => {
     return (
         <div className="w-[298px] h-[465px] rounded-2xl border border-[#ECECEC]">
-            <div className="w-full h-full flex flex-col">
+            <div className="w-full h-full flex flex-col relative">
                 <div className="w-[296px] h-[271px] flex items-center justify-center">
                     <img src="/Product1.svg" alt="Product Image" className="object-cover" />
+
+                    <div className='absolute rounded-tl-2xl rounded-br-2xl bg-[#67BCEE] top-0 left-0 w-[62px] h-8 flex justify-center items-center'>
+                        <span className='text-[12px] leading-3 font-poppins font-medium text-center'>Sale</span>
+                    </div>
                 </div>
 
                 <div className="flex flex-col gap-2 px-4">

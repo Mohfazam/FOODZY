@@ -13,9 +13,9 @@ interface ProductCardProps{
 
 export const ProductCard = () => {
     return (
-        <div className="w-[280px] h-[465px] rounded-2xl border border-[#ECECEC]">
+        <div className="w-full max-w-[280px] h-[465px] rounded-2xl border border-[#ECECEC]">
             <div className="w-full h-full flex flex-col relative">
-                <div className="w-[296px] h-[271px] flex items-center justify-center">
+                <div className="w-full h-[271px] flex items-center justify-center">
                     <img src="/Product1.svg" alt="Product Image" className="object-cover" />
 
                     <div className='absolute rounded-tl-2xl rounded-br-2xl bg-[#67BCEE] top-0 left-0 w-[62px] h-8 flex justify-center items-center'>
@@ -27,7 +27,7 @@ export const ProductCard = () => {
                     
                     <span className="text-[12px] leading-6 text-[#ADADAD] ">Snack</span>
                     
-                    <span className="text-[15px] w-[268px] h-[39px] leading-6 tracing-[0.5px] text-[#2B2B2D] font-medium font-poppins">Fresh organic villa farm lomon 500gm pack</span>
+                    <span className="text-[15px] leading-6 tracing-[0.5px] text-[#2B2B2D] font-medium font-poppins line-clamp-2">Fresh organic villa farm lomon 500gm pack</span>
                     <div className='w-[60px] h-3 flex gap-2 items-center py-4'>
                         <Star size={42} className='text-[#fdc040]'/>
                         <span className='text-[14px] leading-6 text-[#B6B6B6] font-medium'>(4.0)</span>

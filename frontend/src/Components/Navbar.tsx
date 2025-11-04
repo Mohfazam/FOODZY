@@ -65,12 +65,12 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 py-1 sm:px-6 lg:px-8 -mb-3">
-        <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-4">
+        <div className="w-full flex flex-col xl:flex-row justify-between items-center gap-4">
           <div className="shrink-0">
             <img src="main_logo.png" alt="Main Logo" className="w-36 sm:w-48 h-auto px-2" />
           </div>
-          <div className="flex justify-center items-center w-full lg:w-auto">
-            <input type="text" className="border focus:border-[#64B496] outline-none focus:ring-0 border-[#64B496] rounded-tl-[5px] rounded-bl-[5px] w-full sm:w-[300px] md:w-[350px] lg:w-[408px] h-[45px] px-3 text-[#000000]" placeholder="Search For items..."/>
+          <div className="flex justify-center items-center w-full xl:w-auto flex-1 xl:flex-initial">
+            <input type="text" className="border focus:border-[#64B496] outline-none focus:ring-0 border-[#64B496] rounded-tl-[5px] rounded-bl-[5px] w-full sm:w-[300px] md:w-[350px] xl:w-[408px] h-[45px] px-3 text-[#000000]" placeholder="Search For items..."/>
 
             <div className="relative shrink-0">
               <select
@@ -92,17 +92,17 @@ export const Navbar = () => {
           <div className="flex justify-center items-center gap-2 sm:gap-4 shrink-0">
             <div className="flex justify-center items-center gap-1 sm:gap-2 text-[#000000]">
               <UserRound size={21}/>
-              <span className="hidden sm:inline text-[15px] leading-[15px] font-medium font-poppins">Account</span>
+              <span className="text-[13px] sm:text-[15px] leading-[15px] font-medium font-poppins">Account</span>
             </div>
 
             <div className="flex justify-center items-center gap-1 sm:gap-2 text-[#000000]">
               <Heart size={21}/>
-              <span className="hidden sm:inline text-[15px] leading-[15px] font-medium font-poppins">Wishlist</span>
+              <span className="text-[13px] sm:text-[15px] leading-[15px] font-medium font-poppins">Wishlist</span>
             </div>
 
             <div className="flex justify-center items-center gap-1 sm:gap-2 text-[#000000]">
               <ShoppingCart size={21}/>
-              <span className="hidden sm:inline text-[15px] leading-[15px] font-medium font-poppins">Cart</span>
+              <span className="text-[13px] sm:text-[15px] leading-[15px] font-medium font-poppins">Cart</span>
             </div>
 
             

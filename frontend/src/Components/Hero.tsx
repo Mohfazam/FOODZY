@@ -33,7 +33,7 @@ const Hero = () => {
                             
                             <div className="relative">
                                 <Send
-                                    size={20}
+                                    size={18}
                                     className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8d8d8d]"
                                 />
                                 <input

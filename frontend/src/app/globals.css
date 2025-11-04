@@ -38,3 +38,8 @@ html {
     width: 0;  
     background: transparent;  
 }
+
+
+@utility font-poppins {
+  font-family: var(--font-poppins), sans-serif;
+}

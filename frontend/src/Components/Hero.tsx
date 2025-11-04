@@ -44,7 +44,6 @@ const Hero = () => {
                                 />
                             </div>
 
-                            {/* Button */}
                             <div className='bg-[#ffffff] rounded-tr-[50px] rounded-br-[50px]'>
                                 <button className='w-[157px] h-16 rounded-[50px] bg-[#3BB77E] text-white font-medium'>
                                     Subscribe

@@ -6,12 +6,15 @@ const PopularProducts = () => {
 
     console.log("Products inside PopularProducts component:", products);
 
+    
+    const displayProducts = products?.slice(0, 10) || [];
+
     return (
         <div className="w-full px-4 py-4 overflow-hidden">
             <div className="max-w-[1585.97px] mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 justify-items-center">
-                    {products?.length > 0 ? (
-                        products.map((product) => (
+                    {displayProducts.length > 0 ? (
+                        displayProducts.map((product) => (
                             <ProductCard
                                 key={product.id}
                                 name={product.name}

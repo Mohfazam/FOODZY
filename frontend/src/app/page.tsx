@@ -2,7 +2,7 @@ import CategoryGrid from "@/Components/CategoryGrid";
 import DailyBestSales from "@/Components/DailyBestSales";
 import DealOfTheDay from "@/Components/DealOfTheDay";
 import Delivery from "@/Components/Delivery";
-import Footer from "@/Components/Footer";
+import {Footer} from "@/Components/Footer";
 import Hero from "@/Components/Hero";
 import { Navbar } from "@/Components/Navbar"
 import ProductsWrapper from "@/Components/ProductsWrapper";

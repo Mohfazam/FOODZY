@@ -33,11 +33,11 @@ const DailyBestSales = () => {
     return (
         <div className='w-full px-4 py-8 overflow-hidden'>
             <div>
-                <div className='flex justify-between'>
-                    <span className="text-[32px] font-poppins leading-[38px] font-bold text-[#253D4E]">Daily Best Sells</span>
-                    <div className="flex gap-2">
+                <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0'>
+                    <span className="text-[24px] sm:text-[32px] font-poppins leading-[30px] sm:leading-[38px] font-bold text-[#253D4E]">Daily Best Sells</span>
+                    <div className="flex gap-3 sm:gap-2 flex-wrap">
                         <span 
-                            className={`text-[16px] leading-4 font-poppins font-semibold hover:cursor-pointer ${
+                            className={`text-[14px] sm:text-[16px] leading-4 font-poppins font-semibold hover:cursor-pointer ${
                                 activeTab === 'featured' ? 'text-[#3BB77E]' : 'text-[#253D4E]'
                             }`}
                             onClick={() => setActiveTab('featured')}
@@ -45,7 +45,7 @@ const DailyBestSales = () => {
                             Featured
                         </span>
                         <span 
-                            className={`text-[16px] leading-4 font-poppins font-semibold hover:cursor-pointer ${
+                            className={`text-[14px] sm:text-[16px] leading-4 font-poppins font-semibold hover:cursor-pointer ${
                                 activeTab === 'popular' ? 'text-[#3BB77E]' : 'text-[#253D4E]'
                             }`}
                             onClick={() => setActiveTab('popular')}
@@ -53,7 +53,7 @@ const DailyBestSales = () => {
                             Popular
                         </span>
                         <span 
-                            className={`text-[16px] leading-4 font-poppins font-semibold hover:cursor-pointer ${
+                            className={`text-[14px] sm:text-[16px] leading-4 font-poppins font-semibold hover:cursor-pointer ${
                                 activeTab === 'new' ? 'text-[#3BB77E]' : 'text-[#253D4E]'
                             }`}
                             onClick={() => setActiveTab('new')}
@@ -63,11 +63,11 @@ const DailyBestSales = () => {
                     </div>
                 </div>
 
-                <div className="py-4 flex gap-2">
-                    <div className="w-[368px] h-[520px] rounded-[15px]">
-                        <img src="/Left.svg" alt="image" draggable={false} className="object-cover" />
+                <div className="py-4 flex flex-col lg:flex-row gap-4">
+                    <div className="w-full lg:w-[368px] lg:h-[520px] rounded-[15px] overflow-hidden shrink-0">
+                        <img src="/Left.svg" alt="image" draggable={false} className="w-full h-full object-contain lg:object-cover" />
                     </div>
-                    <div className="flex gap-4 flex-wrap">
+                    <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
                         {displayProducts.length > 0 ? (
                             displayProducts.map((product) => (
                                 <BestProductCard

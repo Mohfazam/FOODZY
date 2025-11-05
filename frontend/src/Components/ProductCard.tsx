@@ -1,4 +1,4 @@
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '@/Store/Store';
 
 interface ProductCardProps {
@@ -25,8 +25,13 @@ export const ProductCard = ({
     price,
 }: ProductCardProps) => {
     
-    const addToCart = useCartStore((state) => state.addToCart);
+    const { addToCart, cart, updateQuantity } = useCartStore();
     const actualPrice = price * 1.15;
+    
+    
+    const cartItem = cart.find(item => item.id === id);
+    const isInCart = !!cartItem;
+    const quantity = cartItem?.quantity || 0;
     
     const getFlagColor = (flag?: "HOT" | "SALE" | "NEW") => {
         if (flag === "HOT") return "bg-[#f74b81]";
@@ -62,6 +67,15 @@ export const ProductCard = ({
         });
     };
 
+    const handleQuantityChange = (change: number) => {
+        const newQuantity = quantity + change;
+        if (newQuantity > 0) {
+            updateQuantity(id, newQuantity);
+        } else {
+            updateQuantity(id, 0); 
+        }
+    };
+
     return (
         <div className="w-full max-w-[280px] h-[465px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
             <div className="w-full h-full flex flex-col relative">
@@ -90,7 +104,7 @@ export const ProductCard = ({
 
                     <div className='flex gap-2 items-center py-1'>
                         <Star size={14} className='text-[#fdc040] fill-[#fdc040]' />
-                        <span className='text-[14px] leading-6 text-[#B6B6B6] font-medium'>({rating.toFixed(1)})</span>
+                        <span className='text-[14px] leading-6 text-[#B6B6B6] font-medium'>({rating?.toFixed(1) || '0.0'})</span>
                     </div>
 
                     <div className='flex gap-1'>
@@ -108,13 +122,31 @@ export const ProductCard = ({
                             </span>
                         </div>
 
-                        <button 
-                            onClick={handleAddToCart}
-                            className='w-[84px] h-9 bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'
-                        >
-                            <ShoppingCart size={16} className='text-white' />
-                            <span className='text-[14px] leading-6 font-bold text-white'>Add</span>
-                        </button>
+                        {isInCart ? (
+                            <div className='w-[84px] h-9 bg-[#3BB77E] rounded-sm flex justify-between items-center px-2'>
+                                <button
+                                    onClick={() => handleQuantityChange(-1)}
+                                    className='w-6 h-6 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
+                                >
+                                    <Minus size={14} className='text-white' />
+                                </button>
+                                <span className='text-[14px] leading-6 font-bold text-white'>{quantity}</span>
+                                <button
+                                    onClick={() => handleQuantityChange(1)}
+                                    className='w-6 h-6 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
+                                >
+                                    <Plus size={14} className='text-white' />
+                                </button>
+                            </div>
+                        ) : (
+                            <button 
+                                onClick={handleAddToCart}
+                                className='w-[84px] h-9 bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'
+                            >
+                                <ShoppingCart size={16} className='text-white' />
+                                <span className='text-[14px] leading-6 font-bold text-white'>Add</span>
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

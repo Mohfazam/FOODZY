@@ -1,4 +1,4 @@
-import { Star } from 'lucide-react';
+import { Star, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '@/Store/Store';
 
 interface ProductCardProps {
@@ -25,8 +25,13 @@ export const BestProductCard = ({
     price,
 }: ProductCardProps) => {
     
-    const addToCart = useCartStore((state) => state.addToCart);
+    const { addToCart, cart, updateQuantity } = useCartStore();
     const actualPrice = price * 1.15;
+    
+   
+    const cartItem = cart.find(item => item.id === id);
+    const isInCart = !!cartItem;
+    const quantity = cartItem?.quantity || 0;
     
     const getFlagColor = (flag?: "HOT" | "SALE" | "NEW") => {
         if (flag === "HOT") return "bg-[#f74b81]";
@@ -62,6 +67,15 @@ export const BestProductCard = ({
         });
     };
 
+    const handleQuantityChange = (change: number) => {
+        const newQuantity = quantity + change;
+        if (newQuantity > 0) {
+            updateQuantity(id, newQuantity);
+        } else {
+            updateQuantity(id, 0); 
+        }
+    };
+
     return (
         <div className="w-full max-w-[260px] h-[510px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
             <div className="w-full h-full flex flex-col relative">
@@ -90,7 +104,7 @@ export const BestProductCard = ({
 
                     <div className='flex gap-2 items-center py-1'>
                         <Star size={14} className='text-[#fdc040] fill-[#fdc040]' />
-                        <span className='text-[14px] leading-6 text-[#B6B6B6] font-medium'>({rating.toFixed(1)})</span>
+                        <span className='text-[14px] leading-6 text-[#B6B6B6] font-medium'>({rating?.toFixed(1) || '0.0'})</span>
                     </div>
 
                     <div className='flex gap-1'>
@@ -110,12 +124,30 @@ export const BestProductCard = ({
                     </div>
 
                     <div className='w-full justify-center'>
-                        <button 
-                            onClick={handleAddToCart}
-                            className='w-[226px] h-[47px] bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'
-                        >
-                            <span className='text-[14px] leading-6 font-bold text-white'>Add</span>
-                        </button>
+                        {isInCart ? (
+                            <div className='w-[226px] h-[47px] bg-[#3BB77E] rounded-sm flex justify-between items-center px-4'>
+                                <button
+                                    onClick={() => handleQuantityChange(-1)}
+                                    className='w-8 h-8 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
+                                >
+                                    <Minus size={18} className='text-white' />
+                                </button>
+                                <span className='text-[16px] leading-6 font-bold text-white'>{quantity}</span>
+                                <button
+                                    onClick={() => handleQuantityChange(1)}
+                                    className='w-8 h-8 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
+                                >
+                                    <Plus size={18} className='text-white' />
+                                </button>
+                            </div>
+                        ) : (
+                            <button 
+                                onClick={handleAddToCart}
+                                className='w-[226px] h-[47px] bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'
+                            >
+                                <span className='text-[14px] leading-6 font-bold text-white'>Add</span>
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

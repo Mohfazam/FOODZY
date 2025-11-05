@@ -1,19 +1,13 @@
 "use client"
 
 import { useState } from 'react';
-import { ChevronDown, Phone, Search, UserRound, Heart, ShoppingCart, X, Plus, Minus, Trash2 } from "lucide-react"
+import { ChevronDown, Phone, Search, UserRound, Heart, ShoppingCart } from "lucide-react"
 import { useCartStore } from '@/Store/Store';
+import { CartModal } from './CartModal';
 
 export const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { cart, removeFromCart, updateQuantity, getTotalItems, getTotalPrice, clearCart } = useCartStore();
-
-  const handleQuantityChange = (productId: string, currentQuantity: number, change: number) => {
-    const newQuantity = currentQuantity + change;
-    if (newQuantity > 0) {
-      updateQuantity(productId, newQuantity);
-    }
-  };
+  const { getTotalItems } = useCartStore();
 
   return (
     <>
@@ -149,128 +143,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      
-      {isCartOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsCartOpen(false)}
-          ></div>
-
-          
-          <div className="relative bg-white rounded-2xl shadow-2xl w-[90%] max-w-[600px] max-h-[80vh] flex flex-col">
-            
-            <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
-              <h2 className="text-[24px] font-bold text-[#253D4E] font-poppins">Shopping Cart</h2>
-              <button 
-                onClick={() => setIsCartOpen(false)}
-                className="text-gray-500 hover:text-gray-700 transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            
-            <div className="flex-1 overflow-y-auto px-6 py-4">
-              {cart.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full py-12">
-                  <ShoppingCart size={64} className="text-gray-300 mb-4" />
-                  <p className="text-gray-500 text-[16px] font-poppins">Your cart is empty</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {cart.map((item) => (
-                    <div key={item.id} className="flex gap-4 p-4 border border-gray-200 rounded-lg">
-                      
-                      <div className="w-20 h-20 rounded-lg overflow-hidden shrink-0">
-                        <img 
-                          src={item.image || "/Product1.svg"} 
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-
-                      
-                      <div className="flex-1 flex flex-col justify-between">
-                        <div>
-                          <h3 className="text-[14px] font-medium text-[#253D4E] font-poppins line-clamp-2">
-                            {item.name}
-                          </h3>
-                          <p className="text-[12px] text-gray-500">{item.brand}</p>
-                        </div>
-
-                        <div className="flex items-center justify-between mt-2">
-                          
-                          <div className="flex items-center gap-2 border border-gray-300 rounded-md">
-                            <button
-                              onClick={() => handleQuantityChange(item.id, item.quantity, -1)}
-                              className="p-1 hover:bg-gray-100 transition-colors"
-                            >
-                              <Minus size={14} />
-                            </button>
-                            <span className="px-3 text-[14px] font-medium">{item.quantity}</span>
-                            <button
-                              onClick={() => handleQuantityChange(item.id, item.quantity, 1)}
-                              className="p-1 hover:bg-gray-100 transition-colors"
-                            >
-                              <Plus size={14} />
-                            </button>
-                          </div>
-
-                          
-                          <div className="flex items-center gap-3">
-                            <span className="text-[16px] font-bold text-[#3BB77E] font-poppins">
-                              ₹{(item.price * item.quantity).toFixed(2)}
-                            </span>
-                            <button
-                              onClick={() => removeFromCart(item.id)}
-                              className="text-red-500 hover:text-red-700 transition-colors"
-                            >
-                              <Trash2 size={18} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            
-            {cart.length > 0 && (
-              <div className="px-6 py-4 border-t border-gray-200">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[18px] font-bold text-[#253D4E] font-poppins">Total:</span>
-                  <span className="text-[24px] font-bold text-[#3BB77E] font-poppins">
-                    ₹{getTotalPrice().toFixed(2)}
-                  </span>
-                </div>
-
-                <div className="flex gap-3">
-                  <button
-                    onClick={clearCart}
-                    className="flex-1 py-3 border border-gray-300 rounded-lg text-[14px] font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
-                  >
-                    Clear Cart
-                  </button>
-                  <button
-                    onClick={() => {
-                      
-                      setIsCartOpen(false);
-                      
-                    }}
-                    className="flex-1 py-3 bg-[#F53E32] rounded-lg text-[14px] font-semibold text-white hover:bg-[#f23224] transition-colors"
-                  >
-                    Checkout
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   )
 }

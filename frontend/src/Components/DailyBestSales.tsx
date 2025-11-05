@@ -72,6 +72,7 @@ const DailyBestSales = () => {
                             displayProducts.map((product) => (
                                 <BestProductCard
                                     key={product.id}
+                                    id={product.id}
                                     name={product.name}
                                     image={product.image}
                                     flag={product.flag}

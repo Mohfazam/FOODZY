@@ -1,6 +1,8 @@
-import { Star, ShoppingCart } from 'lucide-react';
+import { Star } from 'lucide-react';
+import { useCartStore } from '@/Store/Store';
 
 interface ProductCardProps {
+    id: string;
     name: string;
     image?: string;
     flag?: "HOT" | "SALE" | "NEW";
@@ -12,6 +14,7 @@ interface ProductCardProps {
 }
 
 export const BestProductCard = ({
+    id,
     name,
     image,
     flag,
@@ -22,6 +25,7 @@ export const BestProductCard = ({
     price,
 }: ProductCardProps) => {
     
+    const addToCart = useCartStore((state) => state.addToCart);
     const actualPrice = price * 1.15;
     
     const getFlagColor = (flag?: "HOT" | "SALE" | "NEW") => {
@@ -38,6 +42,25 @@ export const BestProductCard = ({
     };
 
     const shouldShowFlag = flag || discount;
+
+    const handleAddToCart = () => {
+        addToCart({
+            id,
+            name,
+            image,
+            flag,
+            discount,
+            category: { id: '', name: category, createdAt: '', updatedAt: '' },
+            rating,
+            brand,
+            price,
+            items: 1,
+            stock: 0,
+            createdAt: '',
+            updatedAt: '',
+            categoryId: '',
+        });
+    };
 
     return (
         <div className="w-full max-w-[260px] h-[510px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
@@ -84,9 +107,13 @@ export const BestProductCard = ({
                                 ₹{actualPrice.toFixed(2)}
                             </span>
                         </div>
+                    </div>
 
-                        <button className='w-[84px] h-9 bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'>
-                            <ShoppingCart size={16} className='text-white' />
+                    <div className='w-full justify-center'>
+                        <button 
+                            onClick={handleAddToCart}
+                            className='w-[226px] h-[47px] bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'
+                        >
                             <span className='text-[14px] leading-6 font-bold text-white'>Add</span>
                         </button>
                     </div>

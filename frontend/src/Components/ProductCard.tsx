@@ -1,6 +1,8 @@
 import { Star, ShoppingCart } from 'lucide-react';
+import { useCartStore } from '@/Store/Store';
 
 interface ProductCardProps {
+    id: string;
     name: string;
     image?: string;
     flag?: "HOT" | "SALE" | "NEW";
@@ -12,6 +14,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({
+    id,
     name,
     image,
     flag,
@@ -22,6 +25,7 @@ export const ProductCard = ({
     price,
 }: ProductCardProps) => {
     
+    const addToCart = useCartStore((state) => state.addToCart);
     const actualPrice = price * 1.15;
     
     const getFlagColor = (flag?: "HOT" | "SALE" | "NEW") => {
@@ -38,6 +42,25 @@ export const ProductCard = ({
     };
 
     const shouldShowFlag = flag || discount;
+
+    const handleAddToCart = () => {
+        addToCart({
+            id,
+            name,
+            image,
+            flag,
+            discount,
+            category: { id: '', name: category, createdAt: '', updatedAt: '' },
+            rating,
+            brand,
+            price,
+            items: 1,
+            stock: 0,
+            createdAt: '',
+            updatedAt: '',
+            categoryId: '',
+        });
+    };
 
     return (
         <div className="w-full max-w-[280px] h-[465px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
@@ -85,7 +108,10 @@ export const ProductCard = ({
                             </span>
                         </div>
 
-                        <button className='w-[84px] h-9 bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'>
+                        <button 
+                            onClick={handleAddToCart}
+                            className='w-[84px] h-9 bg-[#F53E32] rounded-sm flex justify-center gap-2 items-center px-4 hover:bg-[#f23224] transition-colors'
+                        >
                             <ShoppingCart size={16} className='text-white' />
                             <span className='text-[14px] leading-6 font-bold text-white'>Add</span>
                         </button>

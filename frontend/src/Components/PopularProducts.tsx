@@ -6,7 +6,6 @@ const PopularProducts = () => {
 
     console.log("Products inside PopularProducts component:", products);
 
-    
     const displayProducts = products?.slice(0, 10) || [];
 
     return (
@@ -17,6 +16,7 @@ const PopularProducts = () => {
                         displayProducts.map((product) => (
                             <ProductCard
                                 key={product.id}
+                                id={product.id}
                                 name={product.name}
                                 image={product.image}
                                 flag={product.flag}

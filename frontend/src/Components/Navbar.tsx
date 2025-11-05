@@ -80,7 +80,7 @@ export const Navbar = () => {
         <div className="max-w-7xl mx-auto px-4 py-1 sm:px-6 lg:px-8 -mb-3">
           <div className="w-full flex flex-col xl:flex-row justify-between items-center gap-4">
             <div className="shrink-0">
-              <img src="/main_logo.png" alt="Main Logo" className="w-36 sm:w-48 h-auto px-2" />
+              <img src="/Main_Logo.svg" alt="Main Logo" className="w-36 sm:w-48 h-auto px-2" />
             </div>
             <div className="flex justify-center items-center w-full xl:w-auto flex-1 xl:flex-initial">
               <input type="text" className="border focus:border-[#64B496] outline-none focus:ring-0 border-[#64B496] rounded-tl-[5px] rounded-bl-[5px] w-full sm:w-[300px] md:w-[350px] xl:w-[408px] h-[45px] px-3 text-[#000000]" placeholder="Search For items..." />

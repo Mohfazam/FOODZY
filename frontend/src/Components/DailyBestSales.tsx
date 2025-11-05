@@ -31,8 +31,8 @@ const DailyBestSales = () => {
     const displayProducts = getFilteredProducts();
 
     return (
-        <div className='w-full px-4 py-8 overflow-hidden'>
-            <div>
+        <div className='w-full py-8 overflow-hidden'>
+            <div className='max-w-[1580px] mx-auto px-4 sm:px-6 lg:px-8'>
                 <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0'>
                     <span className="text-[24px] sm:text-[32px] font-poppins leading-[30px] sm:leading-[38px] font-bold text-[#253D4E]">Daily Best Sells</span>
                     <div className="flex gap-3 sm:gap-2 flex-wrap">

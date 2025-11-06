@@ -1,5 +1,6 @@
 "use client"
 
+import { Star } from "lucide-react";
 import { useRouter } from "next/navigation"
 
 const page = () => {
@@ -22,7 +23,69 @@ const page = () => {
 
             <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
                 <div>
-                    <div>div</div>
+                    <div className="h-[1245px] w-[440px] flex-col gap-5 items-center">
+                        <div className="w-[416px] h-[414px] flex flex-col gap-4 px-4 py-4 border border-[#E9E9E9] rounded-[5px]">
+                            <span className="text-[20px] font-semibold font-poppins leading-6 text-[#000000]">Summary</span>
+                            <div className="w-full flex flex-col gap-4">
+                                <div className="w-full flex justify-between">
+                                    <span className="text-[14px] leading-6 text-[#7A7A7A]">Sub-Total</span>
+                                    <span className="font-medium text-[15px] leading-6 text-[#000000]">$80.00</span>
+                                </div>
+
+                                <div className="w-full flex justify-between">
+                                    <span className="text-[14px] leading-6 text-[#7A7A7A]">Delivery Charges</span>
+                                    <span className="font-medium text-[15px] leading-6 text-[#000000]">$20.00</span>
+                                </div>
+                                <div className="bg-[#e9e9e9] h-px" />
+
+                                <div className="flex justify-between mb-2">
+                                    <span className="text-[16px] font-semibold leading-6 text-[#2B2B2D]">Total Amount</span>
+                                    <span className="text-[22px] leading-6 text-[#000000] font-semibold">$80.00</span>
+                                </div>
+
+                                <div className="flex gap-3">
+                                    <img src="/Product1.svg" alt="Product image" className="w-20 h-20"/>
+                                    <div className="w-[214px] h-[88px] flex flex-col gap-2">
+                                        <span className="text-[15px] leading-[18px] font-normal text-[#000000]">Dates Value Pouch</span>
+                                        <div className="flex gap-2">
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                        </div>
+
+                                        <div className="flex gap-2 items-center">
+                                            <span className="font-poppins text-[16px] leading-7 text-[#64B496]">$120.25</span>
+                                            <span className="font-poppins text-[13px] leading-[23px] text-[#7A7A7A]">$123.25</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-3">
+                                    <img src="/Product1.svg" alt="Product image" className="w-20 h-20"/>
+                                    <div className="w-[214px] h-[88px] flex flex-col gap-2">
+                                        <span className="text-[15px] leading-[18px] font-normal text-[#000000]">Dates Value Pouch</span>
+                                        <div className="flex gap-2">
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]"/>
+                                        </div>
+
+                                        <div className="flex gap-2 items-center">
+                                            <span className="font-poppins text-[16px] leading-7 text-[#64B496]">$120.25</span>
+                                            <span className="font-poppins text-[13px] leading-[23px] text-[#7A7A7A]">$123.25</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>Delivery</div>
+                        <div>Payment</div>
+                        <div>Payment methonf</div>
+                    </div>
                     <div>right</div>
                 </div>
             </div>

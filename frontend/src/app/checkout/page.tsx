@@ -91,7 +91,7 @@ const page = () => {
                             </span>
 
                             <div className="flex justify-between mt-3">
-                                
+
                                 <div>
                                     <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Free Shipping</span>
                                     <div className="flex gap-2 items-center mt-1">
@@ -108,7 +108,7 @@ const page = () => {
                                     </div>
                                 </div>
 
-                               
+
                                 <div>
                                     <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Express Shipping</span>
                                     <div className="flex gap-2 items-center mt-1">
@@ -130,59 +130,63 @@ const page = () => {
 
 
                         <div className="w-[416px] px-4 py-4 border border-[#E9E9E9] rounded-[5px] flex flex-col gap-3">
-  <span className="text-[20px] leading-6 text-[#000000]">Payment Method</span>
+                            <span className="text-[20px] leading-6 text-[#000000]">Payment Method</span>
 
-  <span className="text-[14px] leading-6 text-[#7A7A7A]">
-    Please select your preferred payment method for this order
-  </span>
+                            <span className="text-[14px] leading-6 text-[#7A7A7A]">
+                                Please select your preferred payment method for this order
+                            </span>
 
-  <div className="flex flex-col gap-3 mt-3">
-    
-    <div className="flex items-center gap-3">
-      <input
-        type="radio"
-        name="payment"
-        className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
+                            <div className="flex flex-col gap-3 mt-3">
+
+                                <div className="flex items-center gap-3">
+                                    <input
+                                        type="radio"
+                                        name="payment"
+                                        className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
         checked:before:content-[''] checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 
         checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 
         checked:before:w-2.5 checked:before:h-2.5 checked:before:rounded-full checked:before:bg-red-500"
-      />
-      <div className="flex flex-col">
-        <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Cash on Delivery</span>
-      </div>
-    </div>
+                                    />
+                                    <div className="flex flex-col">
+                                        <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Cash on Delivery</span>
+                                    </div>
+                                </div>
 
 
-    <div className="flex items-center gap-3">
-      <input
-        type="radio"
-        name="payment"
-        className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
+                                <div className="flex items-center gap-3">
+                                    <input
+                                        type="radio"
+                                        name="payment"
+                                        className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
         checked:before:content-[''] checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 
         checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 
         checked:before:w-2.5 checked:before:h-2.5 checked:before:rounded-full checked:before:bg-red-500"
-      />
-      <div className="flex flex-col">
-        <span className="text-[15px] leading-[15px] text-[#2B2B2D]">UPI</span>
-      </div>
-    </div>
-    <div className="flex items-center gap-3">
-      <input
-        type="radio"
-        name="payment"
-        className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
+                                    />
+                                    <div className="flex flex-col">
+                                        <span className="text-[15px] leading-[15px] text-[#2B2B2D]">UPI</span>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <input
+                                        type="radio"
+                                        name="payment"
+                                        className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
         checked:before:content-[''] checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 
         checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 
         checked:before:w-2.5 checked:before:h-2.5 checked:before:rounded-full checked:before:bg-red-500"
-      />
-      <div className="flex flex-col">
-        <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Bank Transfer</span>
-      </div>
-    </div>
-  </div>
-</div>
+                                    />
+                                    <div className="flex flex-col">
+                                        <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Bank Transfer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div>Payment methonf</div>
+                        <div className="h-[101px] w-[416px] flex flex-col gap-3 px-4 py-4 border border-[#E9E9E9] rounded-[5px]">
+                            <span className="text-[20px] leading-6 text-[#000000]">Payment Method</span>
+                            
+                                <img src="/Visa.svg" alt="Visa Image" />
+                        </div>
                     </div>
                     <div>right</div>
                 </div>

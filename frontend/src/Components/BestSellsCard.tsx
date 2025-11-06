@@ -1,5 +1,6 @@
 import { Star, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '@/Store/Store';
+import { useRouter } from 'next/navigation';
 
 interface ProductCardProps {
     id: string;
@@ -24,11 +25,10 @@ export const BestProductCard = ({
     brand = "Unknown",
     price,
 }: ProductCardProps) => {
-    
+    const router = useRouter();
     const { addToCart, cart, updateQuantity } = useCartStore();
     const actualPrice = price * 1.15;
     
-   
     const cartItem = cart.find(item => item.id === id);
     const isInCart = !!cartItem;
     const quantity = cartItem?.quantity || 0;
@@ -48,7 +48,8 @@ export const BestProductCard = ({
 
     const shouldShowFlag = flag || discount;
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent navigation when clicking add to cart
         addToCart({
             id,
             name,
@@ -67,7 +68,8 @@ export const BestProductCard = ({
         });
     };
 
-    const handleQuantityChange = (change: number) => {
+    const handleQuantityChange = (e: React.MouseEvent, change: number) => {
+        e.stopPropagation(); // Prevent navigation when changing quantity
         const newQuantity = quantity + change;
         if (newQuantity > 0) {
             updateQuantity(id, newQuantity);
@@ -76,8 +78,15 @@ export const BestProductCard = ({
         }
     };
 
+    const handleCardClick = () => {
+        router.push(`/products/${id}`);
+    };
+
     return (
-        <div className="w-full max-w-[255px] h-[510px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
+        <div 
+            onClick={handleCardClick}
+            className="w-full max-w-[255px] h-[510px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow cursor-pointer"
+        >
             <div className="w-full h-full flex flex-col relative">
                 <div className="w-full h-[271px] flex items-center justify-center rounded-t-2xl overflow-hidden">
                     <img 
@@ -127,14 +136,14 @@ export const BestProductCard = ({
                         {isInCart ? (
                             <div className='w-[226px] h-[47px] bg-[#3BB77E] rounded-sm flex justify-between items-center px-4'>
                                 <button
-                                    onClick={() => handleQuantityChange(-1)}
+                                    onClick={(e) => handleQuantityChange(e, -1)}
                                     className='w-8 h-8 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
                                 >
                                     <Minus size={18} className='text-white' />
                                 </button>
                                 <span className='text-[16px] leading-6 font-bold text-white'>{quantity}</span>
                                 <button
-                                    onClick={() => handleQuantityChange(1)}
+                                    onClick={(e) => handleQuantityChange(e, 1)}
                                     className='w-8 h-8 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
                                 >
                                     <Plus size={18} className='text-white' />

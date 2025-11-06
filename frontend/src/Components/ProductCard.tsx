@@ -1,5 +1,6 @@
 import { Star, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { useCartStore } from '@/Store/Store';
+import { useRouter } from 'next/navigation';
 
 interface ProductCardProps {
     id: string;
@@ -24,10 +25,9 @@ export const ProductCard = ({
     brand = "Unknown",
     price,
 }: ProductCardProps) => {
-    
+    const router = useRouter();
     const { addToCart, cart, updateQuantity } = useCartStore();
     const actualPrice = price * 1.15;
-    
     
     const cartItem = cart.find(item => item.id === id);
     const isInCart = !!cartItem;
@@ -48,7 +48,8 @@ export const ProductCard = ({
 
     const shouldShowFlag = flag || discount;
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent navigation
         addToCart({
             id,
             name,
@@ -67,7 +68,8 @@ export const ProductCard = ({
         });
     };
 
-    const handleQuantityChange = (change: number) => {
+    const handleQuantityChange = (e: React.MouseEvent, change: number) => {
+        e.stopPropagation(); // Prevent navigation
         const newQuantity = quantity + change;
         if (newQuantity > 0) {
             updateQuantity(id, newQuantity);
@@ -76,8 +78,15 @@ export const ProductCard = ({
         }
     };
 
+    const handleCardClick = () => {
+        router.push(`/products/${id}`);
+    };
+
     return (
-        <div className="w-full max-w-[280px] h-[465px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
+        <div 
+            onClick={handleCardClick}
+            className="w-full max-w-[280px] h-[465px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow cursor-pointer"
+        >
             <div className="w-full h-full flex flex-col relative">
                 <div className="w-full h-[271px] flex items-center justify-center rounded-t-2xl overflow-hidden">
                     <img 
@@ -125,14 +134,14 @@ export const ProductCard = ({
                         {isInCart ? (
                             <div className='w-[84px] h-9 bg-[#3BB77E] rounded-sm flex justify-between items-center px-2'>
                                 <button
-                                    onClick={() => handleQuantityChange(-1)}
+                                    onClick={(e) => handleQuantityChange(e, -1)}
                                     className='w-6 h-6 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
                                 >
                                     <Minus size={14} className='text-white' />
                                 </button>
                                 <span className='text-[14px] leading-6 font-bold text-white'>{quantity}</span>
                                 <button
-                                    onClick={() => handleQuantityChange(1)}
+                                    onClick={(e) => handleQuantityChange(e, 1)}
                                     className='w-6 h-6 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
                                 >
                                     <Plus size={14} className='text-white' />

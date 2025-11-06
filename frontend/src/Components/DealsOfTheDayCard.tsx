@@ -1,5 +1,6 @@
 import { Star, Plus, Minus, ShoppingCart } from 'lucide-react';
 import { useCartStore } from '@/Store/Store';
+import { useRouter } from 'next/navigation';
 
 interface ProductCardProps {
     id: string;
@@ -24,7 +25,7 @@ export const DealsOfTheDayProductCard = ({
     brand = "Unknown",
     price,
 }: ProductCardProps) => {
-    
+    const router = useRouter();
     const { addToCart, cart, updateQuantity } = useCartStore();
     const actualPrice = price * 1.15;
     
@@ -47,7 +48,8 @@ export const DealsOfTheDayProductCard = ({
 
     const shouldShowFlag = flag || discount;
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.stopPropagation(); // Prevent navigation
         addToCart({
             id,
             name,
@@ -66,7 +68,8 @@ export const DealsOfTheDayProductCard = ({
         });
     };
 
-    const handleQuantityChange = (change: number) => {
+    const handleQuantityChange = (e: React.MouseEvent, change: number) => {
+        e.stopPropagation(); // Prevent navigation
         const newQuantity = quantity + change;
         if (newQuantity > 0) {
             updateQuantity(id, newQuantity);
@@ -75,8 +78,15 @@ export const DealsOfTheDayProductCard = ({
         }
     };
 
+    const handleCardClick = () => {
+        router.push(`/products/${id}`);
+    };
+
     return (
-        <div className="w-full max-w-[379px] h-[463px] relative">
+        <div 
+            onClick={handleCardClick}
+            className="w-full max-w-[379px] h-[463px] relative cursor-pointer"
+        >
             <div className="w-full h-[335px] flex items-center border border-[#ECECEC] justify-center rounded-2xl overflow-hidden relative">
                 <img 
                     src={image || "/Product1.svg"} 
@@ -121,16 +131,16 @@ export const DealsOfTheDayProductCard = ({
 
                         <div className='shrink-0'>
                             {isInCart ? (
-                                <div className='w-[120px] h-10 bg-[#3BB77E]  rounded-sm flex justify-between items-center px-3'>
+                                <div className='w-[120px] h-10 bg-[#3BB77E] rounded-sm flex justify-between items-center px-3'>
                                     <button
-                                        onClick={() => handleQuantityChange(-1)}
+                                        onClick={(e) => handleQuantityChange(e, -1)}
                                         className='w-7 h-7 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
                                     >
                                         <Minus size={16} className='text-white' />
                                     </button>
                                     <span className='text-[15px] leading-6 font-bold text-white'>{quantity}</span>
                                     <button
-                                        onClick={() => handleQuantityChange(1)}
+                                        onClick={(e) => handleQuantityChange(e, 1)}
                                         className='w-7 h-7 flex items-center justify-center hover:bg-[#2da066] rounded transition-colors'
                                     >
                                         <Plus size={16} className='text-white' />
@@ -139,7 +149,7 @@ export const DealsOfTheDayProductCard = ({
                             ) : (
                                 <button 
                                     onClick={handleAddToCart}
-                                    className='w-[120px] h-10  bg-[#f53e32] rounded-sm flex justify-center gap-2 items-center hover:bg-[#f23224] transition-colors'
+                                    className='w-[120px] h-10 bg-[#f53e32] rounded-sm flex justify-center gap-2 items-center hover:bg-[#f23224] transition-colors'
                                 >
                                     <ShoppingCart size={16} className='text-white' />
                                     <span className='text-[14px] leading-6 font-bold text-white'>Add</span>

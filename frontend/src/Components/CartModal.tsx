@@ -2,8 +2,10 @@
 
 import { X, ShoppingCart, Plus, Minus, Trash2 } from "lucide-react"
 import { useCartStore, useCartModalStore } from '@/Store/Store';
+import { useRouter } from "next/navigation";
 
 export const CartModal = () => {
+  const navigate = useRouter();
   const { cart, removeFromCart, updateQuantity, getTotalItems, getTotalPrice, clearCart } = useCartStore();
   const { isCartOpen, closeCart } = useCartModalStore();
 
@@ -139,7 +141,9 @@ export const CartModal = () => {
               <button
                 onClick={() => {
                   closeCart();
-                  // checkout nav
+
+                  navigate.push("/checkout")
+                 
                 }}
                 className="flex-1 py-2 sm:py-3 bg-[#F53E32] rounded-lg text-[12px] sm:text-[14px] font-semibold text-white hover:bg-[#f23224] active:bg-[#e02a1d] transition-colors"
               >

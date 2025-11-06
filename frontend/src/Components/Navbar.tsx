@@ -7,7 +7,7 @@ export const Navbar = () => {
   const cart = useCartStore((state) => state.cart);
   const openCart = useCartModalStore((state) => state.openCart);
   
-  // Calculate item count from cart
+  
   const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (

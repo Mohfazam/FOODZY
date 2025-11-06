@@ -1,13 +1,14 @@
 "use client"
 
-import { useState } from 'react';
 import { ChevronDown, Phone, Search, UserRound, Heart, ShoppingCart } from "lucide-react"
-import { useCartStore } from '@/Store/Store';
-import { CartModal } from './CartModal';
+import { useCartStore, useCartModalStore } from '@/Store/Store';
 
 export const Navbar = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const { getTotalItems } = useCartStore();
+  const cart = useCartStore((state) => state.cart);
+  const openCart = useCartModalStore((state) => state.openCart);
+  
+  // Calculate item count from cart
+  const itemCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <>
@@ -124,14 +125,14 @@ export const Navbar = () => {
               
               <div className="relative">
                 <button 
-                  onClick={() => setIsCartOpen(true)}
+                  onClick={openCart}
                   className="flex justify-center items-center gap-1 sm:gap-2 text-[#000000] cursor-pointer"
                 >
                   <div className="relative">
                     <ShoppingCart size={21} />
-                    {getTotalItems() > 0 && (
+                    {itemCount > 0 && (
                       <span className="absolute -top-2 -right-2 bg-[#F53E32] text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                        {getTotalItems()}
+                        {itemCount}
                       </span>
                     )}
                   </div>
@@ -142,8 +143,6 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
-
-      <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   )
 }

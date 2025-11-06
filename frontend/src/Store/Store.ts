@@ -123,3 +123,17 @@ export const useProductStore = create<ProductState>((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
 }));
+
+interface CartModalState {
+  isCartOpen: boolean;
+  openCart: () => void;
+  closeCart: () => void;
+  toggleCart: () => void;
+}
+
+export const useCartModalStore = create<CartModalState>((set) => ({
+  isCartOpen: false,
+  openCart: () => set({ isCartOpen: true }),
+  closeCart: () => set({ isCartOpen: false }),
+  toggleCart: () => set((state) => ({ isCartOpen: !state.isCartOpen })),
+}));

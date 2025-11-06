@@ -1,15 +1,11 @@
 "use client"
 
 import { X, ShoppingCart, Plus, Minus, Trash2 } from "lucide-react"
-import { useCartStore } from '@/Store/Store';
+import { useCartStore, useCartModalStore } from '@/Store/Store';
 
-interface CartModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
+export const CartModal = () => {
   const { cart, removeFromCart, updateQuantity, getTotalItems, getTotalPrice, clearCart } = useCartStore();
+  const { isCartOpen, closeCart } = useCartModalStore();
 
   const handleQuantityChange = (productId: string, currentQuantity: number, change: number) => {
     const newQuantity = currentQuantity + change;
@@ -18,23 +14,23 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
     }
   };
 
-  if (!isOpen) return null;
+  if (!isCartOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
-     
+      
       <div 
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
+        onClick={closeCart}
       ></div>
 
       
       <div className="relative bg-white rounded-xl sm:rounded-2xl shadow-2xl w-full max-w-[95vw] sm:max-w-[600px] max-h-[90vh] sm:max-h-[85vh] flex flex-col">
-        
+       
         <div className="flex justify-between items-center px-3 sm:px-6 py-2.5 sm:py-4 border-b border-gray-200">
           <h2 className="text-[18px] sm:text-[24px] font-bold text-[#253D4E] font-poppins">Shopping Cart</h2>
           <button 
-            onClick={onClose}
+            onClick={closeCart}
             className="text-gray-500 hover:text-gray-700 transition-colors p-1"
             aria-label="Close cart"
           >
@@ -142,8 +138,8 @@ export const CartModal = ({ isOpen, onClose }: CartModalProps) => {
               </button>
               <button
                 onClick={() => {
-                  onClose();
-                  
+                  closeCart();
+                  // checkout nav
                 }}
                 className="flex-1 py-2 sm:py-3 bg-[#F53E32] rounded-lg text-[12px] sm:text-[14px] font-semibold text-white hover:bg-[#f23224] active:bg-[#e02a1d] transition-colors"
               >

@@ -77,7 +77,7 @@ export const BestProductCard = ({
     };
 
     return (
-        <div className="w-full max-w-[260px] h-[510px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
+        <div className="w-full max-w-[255px] h-[510px] rounded-2xl border border-[#ECECEC] hover:shadow-lg transition-shadow">
             <div className="w-full h-full flex flex-col relative">
                 <div className="w-full h-[271px] flex items-center justify-center rounded-t-2xl overflow-hidden">
                     <img 

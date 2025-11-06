@@ -93,8 +93,8 @@ export const DealsOfTheDayProductCard = ({
                 )}
             </div>
 
-            <div className='w-[325px] h-[193px] rounded-[10px] bg-[#FFFFFF] absolute bottom-0 left-1/2 -translate-x-1/2 shadow-xl border border-[#ECECEC]'>
-                <div className='flex flex-col gap-2 px-6 py-3'>
+            <div className='w-[305px] h-[193px] rounded-[10px] bg-[#FFFFFF] absolute bottom-0 left-1/2 -translate-x-1/2 shadow-xl border border-[#ECECEC]'>
+                <div className='flex flex-col gap-2 px-4 py-3'>
                     <span className="text-[15px] leading-6 tracking-[0.5px] text-[#2B2B2D] font-medium font-poppins line-clamp-2 min-h-12">
                         {name}
                     </span>

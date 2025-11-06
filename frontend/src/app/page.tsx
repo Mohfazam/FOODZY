@@ -12,7 +12,7 @@ import ProductsWrapper from "@/Components/ProductsWrapper";
 export default function Home() {
   return (
     <div>
-      <Navbar />
+      
       <FloatingCartButton />
       <CartModal />
       <Hero />
@@ -21,7 +21,6 @@ export default function Home() {
       <DailyBestSales />
       <DealOfTheDay />
       <Delivery />
-      <Footer />
     </div>
   );
 }

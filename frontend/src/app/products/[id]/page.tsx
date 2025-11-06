@@ -1,5 +1,6 @@
 'use client'
 
+import { Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -25,7 +26,7 @@ const page = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex gap-2">
+        <div className="flex gap-6">
           <div className="w-[306px] h-[578px] rounded-[5px] bg-[#F7F7F8] border border-[#E9E9E9] px-6 py-6">
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-3">
@@ -119,7 +120,7 @@ const page = () => {
                 </div>
 
 
-                <div className="grid grid-cols-2 grid-rows-2 gap-3">
+                <div className="grid grid-cols-2 grid-rows-2 gap-2">
                   <div className="w-[116px] h-8 rounded-[5px] border border-[#E9E9E9] bg-white flex items-center justify-center">
                     <span className="text-[14px] leading-[30px] tracing-[0.48px] font-normal text-[#7A7A7A]">Vegetables</span>
                   </div>
@@ -146,12 +147,137 @@ const page = () => {
                 </div>
 
               </div>
-
-
-
             </div>
           </div>
-          <div>Right</div>
+
+
+          <div className="max-w-[990px] h-[1064px]">
+            <div className="flex gap-6 h-[590px]">
+
+              <div className="w-[471px] h-[590] flex justify-center items-center  rounded-[5px]">
+                <img src="/Product1.svg" alt="Product Image" draggable={false} className="object-contain h-[590px] w-[470px]" />
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <span className="text-[22px] leading-[33px] tracing-[0.48px] font-medium font-poppins text-[#2B2B2D]">Seeds Of Change Oraganic Quinoa, Brown</span>
+                <span className="text-[14px] leading-6 tracing-[0.48px] font-medium font-poppins text-[#7A7A7A]">Lorem ipsum dolor sit amet consectetur adipisicing elit. In, iure minus error doloribus saepe natus?</span>
+                <div className="bg-[#e9e9e9] h-px" />
+
+                <div className="flex gap-4">
+                  <div className="flex gap-2 text-[#F5885F]">
+                    <Star className="" /><Star /><Star /><Star /><Star />
+                  </div>
+
+                  <span className="text-[15px] font-poppins leading-[26px] tracing-[0.48px] text-[#7A7A7A]">(75 reviews)</span>
+                </div>
+
+
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Brand</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Brand</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Flavour</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Diet Type</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Weight</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Speciality</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Info</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+                  <div className="flex gap-2">
+                    <div className="flex justify-between w-[100px]">
+                      <span className="text-[16px] leading-6 tracing-[0.48px] font-poppins text-[#2B2B2D]">Items</span>
+                      <span className="pr-3 text-[#2B2B2D]">:</span>
+                    </div>
+                    <span>ESTA BETTERU CO</span>
+                  </div>
+
+
+                </div>
+
+                <div>
+                  <div className="flex gap-4 items-center mt-4">
+                    <span className="font-semibold text-[24px] leading-7 text-[#F53E32] font-poppins">$120.25</span>
+                    <span className="font-poppins text-[16px] leading-7 text-[#7A7A7A]">$123.25</span>
+                  </div>
+
+                  <div className="flex gap-3 mt-4">
+                    <span className="text-[16px] leading-[25px] text-[#2B2B2D] font-poppins">Size/Weight :</span>
+                    <div className="flex gap-4">
+                      <button className="rounded-[5px] w-[54px] h-6 border border-[#E9E9E9] bg-[#F53E32] text-white text-center text-[12px] leading-3">5kg</button>
+                      <button className="rounded-[5px] border border-[#E9E9E9] w-[54px] h-6  bg-[#FFFFFF] text-[#777777] text-center text-[12px] leading-3">10kg</button>
+                      <button className="rounded-[5px] border border-[#E9E9E9] w-[54px] h-6  bg-[#FFFFFF] text-[#777777] text-center text-[12px] leading-3">15kg</button>
+                      <button className="rounded-[5px] border border-[#E9E9E9] w-[54px] h-6  bg-[#FFFFFF] text-[#777777] text-center text-[12px] leading-3">20kg</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex gap-5 mt-4">
+                  <div className="flex gap-2">
+                    <div className="w-10 h-10 rounded-[5px] border border-[#E9E9E9] text-[#000000]">1</div>
+                    <div className="flex flex-col gap-1 text-[#000000]">
+                      <div className="w-[18px] h-[18px] rounded-[5px] border border-[#E9E9E9] text-center">+</div>
+                      <div className="w-[18px] h-[18px] rounded-[5px] border border-[#E9E9E9] text-center">-</div>
+                    </div>
+                  </div>
+
+                  <button className="w-[125px] h-10 rounded-[5px] bg-[#F53E32]">Add To Cart</button>
+                </div>
+
+              </div>
+            </div>
+            <div>Bottom</div>
+          </div>
         </div>
       </div>
     </div>

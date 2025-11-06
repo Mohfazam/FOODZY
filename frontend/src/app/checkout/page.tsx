@@ -23,7 +23,7 @@ const page = () => {
 
             <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
                 <div>
-                    <div className="h-[1245px] w-[440px] flex-col gap-5 items-center">
+                    <div className="h-[1245px] w-[440px] flex flex-col gap-5 items-center">
                         <div className="w-[416px] h-[414px] flex flex-col gap-4 px-4 py-4 border border-[#E9E9E9] rounded-[5px]">
                             <span className="text-[20px] font-semibold font-poppins leading-6 text-[#000000]">Summary</span>
                             <div className="w-full flex flex-col gap-4">
@@ -44,15 +44,15 @@ const page = () => {
                                 </div>
 
                                 <div className="flex gap-3">
-                                    <img src="/Product1.svg" alt="Product image" className="w-20 h-20"/>
+                                    <img src="/Product1.svg" alt="Product image" className="w-20 h-20" />
                                     <div className="w-[214px] h-[88px] flex flex-col gap-2">
                                         <span className="text-[15px] leading-[18px] font-normal text-[#000000]">Dates Value Pouch</span>
                                         <div className="flex gap-2">
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
                                         </div>
 
                                         <div className="flex gap-2 items-center">
@@ -63,15 +63,15 @@ const page = () => {
                                 </div>
 
                                 <div className="flex gap-3">
-                                    <img src="/Product1.svg" alt="Product image" className="w-20 h-20"/>
+                                    <img src="/Product1.svg" alt="Product image" className="w-20 h-20" />
                                     <div className="w-[214px] h-[88px] flex flex-col gap-2">
                                         <span className="text-[15px] leading-[18px] font-normal text-[#000000]">Dates Value Pouch</span>
                                         <div className="flex gap-2">
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
-                                            <Star size={14} className="text-[#F4A263]"/>
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
+                                            <Star size={14} className="text-[#F4A263]" />
                                         </div>
 
                                         <div className="flex gap-2 items-center">
@@ -82,7 +82,53 @@ const page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div>Delivery</div>
+
+                        <div className="w-[416px] h-[189px] px-4 py-4 border border-[#E9E9E9] rounded-[5px] flex flex-col gap-2">
+                            <span className="text-[20px] leading-6 text-[#000000]">Delivery Method</span>
+
+                            <span className="text-[14px] leading-6 text-[#7A7A7A]">
+                                Please select the preferred shipping method to use this order
+                            </span>
+
+                            <div className="flex justify-between mt-3">
+                                
+                                <div>
+                                    <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Free Shipping</span>
+                                    <div className="flex gap-2 items-center mt-1">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
+          checked:before:content-[''] checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 
+          checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 
+          checked:before:w-2.5 checked:before:h-2.5 checked:before:rounded-full checked:before:bg-red-500"
+                                        />
+                                        <span className="text-[14px] leading-4 text-[#7A7A7A]">
+                                            Rate - $0.00 Shipping
+                                        </span>
+                                    </div>
+                                </div>
+
+                               
+                                <div>
+                                    <span className="text-[15px] leading-[15px] text-[#2B2B2D]">Express Shipping</span>
+                                    <div className="flex gap-2 items-center mt-1">
+                                        <input
+                                            type="checkbox"
+                                            className="appearance-none w-4 h-4 rounded-full border-2 border-red-500 cursor-pointer relative
+          checked:before:content-[''] checked:before:absolute checked:before:top-1/2 checked:before:left-1/2 
+          checked:before:-translate-x-1/2 checked:before:-translate-y-1/2 
+          checked:before:w-2.5 checked:before:h-2.5 checked:before:rounded-full checked:before:bg-red-500"
+                                        />
+                                        <span className="text-[14px] leading-4 text-[#7A7A7A]">
+                                            Rate - $5.00 Shipping
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <div>Payment</div>
                         <div>Payment methonf</div>
                     </div>

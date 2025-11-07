@@ -22,7 +22,7 @@ const page = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-                <div>
+                <div className="flex gap-2">
                     <div className="h-[1245px] w-[440px] flex flex-col gap-5 items-center">
                         <div className="w-[416px] h-[414px] flex flex-col gap-4 px-4 py-4 border border-[#E9E9E9] rounded-[5px]">
                             <span className="text-[20px] font-semibold font-poppins leading-6 text-[#000000]">Summary</span>
@@ -184,11 +184,52 @@ const page = () => {
 
                         <div className="h-[101px] w-[416px] flex flex-col gap-3 px-4 py-4 border border-[#E9E9E9] rounded-[5px]">
                             <span className="text-[20px] leading-6 text-[#000000]">Payment Method</span>
-                            
-                                <img src="/Visa.svg" alt="Visa Image" />
+
+                            <img src="/Visa.svg" alt="Visa Image" />
                         </div>
                     </div>
-                    <div>right</div>
+                    <div>
+                        <div className="w-[856px] h-[435px] border border-[#E9E9E9] px-6 py-6 rounded-[5px] flex flex-col gap-4">
+                            <div className="text-[20px] leading-5 text-[#2B2B2D] font-semibold">Customer</div>
+
+                            <div className="space-y-2">
+                                <div className="text-gray-600 text-sm mb-4">Checkout Options</div>
+
+                                <div className="text-[20px] leading-5 text-[#2B2B2D] font-semibold mb-6">Returning Customer</div>
+
+                                <form className="space-y-4">
+                                    <div className="mt-8">
+                                        <label className="block text-[15px] leading-[15px] font-normal text-[#2B2B2D] mb-1">Email Address</label>
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email"
+                                            className="w-[806px] border border-gray-300 text-[#757575] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                        />
+                                    </div>
+
+                                    <div className="mt-8">
+                                        <label className="block text-[15px] leading-[15px] font-normal text-[#2B2B2D] mb-1">OTP</label>
+                                        <input
+                                            type="text"
+                                            placeholder="Enter OTP"
+                                            className="w-full border border-gray-300 text-[#757575] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                                        />
+                                    </div>
+
+                                    
+                                    <div className="flex justify-center py-8">
+                                        <button
+                                            type="button"
+                                            className="w-[106px] h-10 bg-[#F53E32] text-white font-semibold rounded-lg hover:bg-red-600 transition-colors"
+                                        >
+                                            Verify
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

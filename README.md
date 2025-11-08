@@ -1,194 +1,250 @@
+# 🍔 FOODZY — Full Stack E-Commerce Platform
 
-# 🍔 FOODZY
+## 🧭 Overview
 
-> A full-stack food ordering platform built with modern tech — OTP-based authentication, smooth checkout flow, email notifications, and a pixel-perfect UI.
+FOODZY is a full-stack e-commerce web application developed as part of the Cognito Innovations assignment.
+It enables users to authenticate via OTP (email-based), browse food products, manage a shopping cart, and place orders with automated email confirmations.
 
----
-
-## 🗺️ Roadmap
-
-| Day | Date | Progress |
-|-----|------|-----------|
-| **Day 0** | Nov 2 | 🏗️ Project structure setup, backend & frontend initialization, Prisma schema design, GitHub repo setup |
-| **Day 1** | Nov 3 | ⚙️ Backend completed — OTP auth, products, categories, orders, reviews, email confirmation setup, Postman testing, deployment |
-| **Day 2** | Nov 4 | 💻 Frontend — product listing, product details page, cart management (Zustand), checkout flow integration |
-| **Day 3** | Nov 5 | 🎨 Final touches — Figma-perfect UI, OTP flow on frontend, cleanup, frontend deployment, and this detailed README.md |
+Both the frontend and backend are fully developed, typed with TypeScript, and deployed on production servers.
 
 ---
 
-## ⚙️ Tech Stack
+## 🎯 Objective
 
-### 🧠 Backend
-- **Node.js + Express.js**
-- **Prisma ORM**
-- **PostgreSQL / MongoDB**
-- **Nodemailer** for emails (OTP + order confirmations)
-- **Deployed on:** Render / Railway / Vercel Serverless
-
-### 💅 Frontend
-- **React + Vite**
-- **TailwindCSS**
-- **Zustand** for state management
-- **Axios** for API integration
-- **Deployed on:** Vercel
+To design and implement a scalable, maintainable, and pixel-perfect e-commerce platform using the prescribed technology stack and coding standards, while adhering strictly to the given evaluation criteria.
 
 ---
 
-## 🔑 Backend Features & API Endpoints
+## 🧰 Technology Stack
 
-### 🧍‍♂️ Auth (Email + OTP)
-| Method | Endpoint | Description |
-|--------|-----------|-------------|
-| `POST` | `/api/auth/send-otp` | Generate & send OTP via email |
-| `POST` | `/api/auth/verify-otp` | Verify OTP, create or log in user |
+### 🖥️ Frontend
+
+* **Framework:** Next.js 16 (TypeScript)
+* **Language:** TypeScript
+* **UI Styling:** TailwindCSS
+* **State Management:** Zustand
+* **Data Fetching:** Axios + React Query
+* **Icons:** Lucide React
+
+### ⚙️ Backend
+
+* **Runtime:** Node.js (TypeScript)
+* **Framework:** Express.js
+* **ORM:** Prisma
+* **Database:** PostgreSQL / MongoDB
+* **Email Service:** Nodemailer (for OTP & order confirmations)
+* **Authentication:** OTP-based login
+* **Deployment:** vercel
 
 ---
+
+## ✨ Features
+
+### 🔐 Authentication
+
+* Email-based OTP verification
+* Automatic user creation on first login
+* Token-based session management
 
 ### 🛒 Products
-| Method | Endpoint | Description |
-|--------|-----------|-------------|
-| `GET` | `/api/products` | Get all products |
-| `GET` | `/api/products/:id` | Get single product details |
+
+* Fetch all products
+* View product details by ID
+
+### 📦 Cart and Orders
+
+* Add, remove, and manage items in cart (Zustand store)
+* Checkout integrated with backend
+* Order confirmation email sent automatically
+
+### 🌐 Additional Features
+
+* Responsive layout (desktop and mobile)
+* Backend health check endpoint
+* Environment-based configuration
 
 ---
+
+## 📁 Folder Structure
+
+### 🧩 Frontend (Next.js 14 + TypeScript)
+
+```
+frontend/
+├── .next/
+├── node_modules/
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── checkout/
+│   │   │   └── page.tsx
+│   │   ├── products/
+│   │   │   └── [id]/
+│   │   │       └── page.tsx
+│   │   ├── globals.css
+│   │   ├── icon.png
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── Components/
+│   │   ├── BestSellsCard.tsx
+│   │   ├── CartModal.tsx
+│   │   ├── CategoryCard.tsx
+│   │   ├── CategoryGrid.tsx
+│   │   ├── DailyBestSales.tsx
+│   │   ├── DealOfTheDay.tsx
+│   │   ├── DealsOfTheDayCard.tsx
+│   │   ├── Delivery.tsx
+│   │   ├── FloatingCartButton.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── PopularProducts.tsx
+│   │   ├── ProductCard.tsx
+│   │   └── ProductsWrapper.tsx
+│   ├── Context/
+│   │   └── Provider.tsx
+│   ├── lib/
+│   │   ├── api.ts
+│   │   └── config.ts
+│   └── Store/
+│       ├── Store.ts
+│       └── tsconfig.ts
+├── .gitignore
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+└── README.md
+```
+
+---
+
+### ⚙️ Backend (Node.js + Express + Prisma + TypeScript)
+
+```
+backend/
+├── .vercel/
+├── dist/
+├── node_modules/
+├── prisma/
+├── src/
+│   ├── Auth/
+│   ├── Feedback/
+│   ├── middleware/
+│   ├── Order/
+│   ├── Products/
+│   ├── utils/
+│   └── index.ts
+├── .env
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── tsconfig.json
+├── tsconfig.tsbuildinfo
+└── vercel.json
+```
+
+---
+
+## 🧩 API Endpoints
+
+### 🔐 Authentication
+
+| Method | Endpoint               | Description                      |
+| ------ | ---------------------- | -------------------------------- |
+| POST   | `/api/auth/send-otp`   | Generate and send OTP via email  |
+| POST   | `/api/auth/verify-otp` | Verify OTP and authenticate user |
+| GET    | `/api/auth/me`         | Get logged-in user details       |
+
+### 🛍️ Products
+
+| Method | Endpoint            | Description                     |
+| ------ | ------------------- | ------------------------------- |
+| GET    | `/api/products`     | Retrieve all products           |
+| GET    | `/api/products/:id` | Retrieve single product details |
 
 ### 📦 Orders
-| Method | Endpoint | Description |
-|--------|-----------|-------------|
-| `POST` | `/api/orders` | Create a new order (store in DB) |
-| `GET` | `/api/orders/:userId` | Fetch user’s order history |
-| `POST` | `/api/email/order-confirmation` | (Optional) Send order confirmation email manually (testing) |
 
-> ✅ After successful order → Email confirmation is automatically sent to the user.
+| Method | Endpoint                        | Description                                      |
+| ------ | ------------------------------- | ------------------------------------------------ |
+| POST   | `/api/orders`                   | Create a new order                               |
+| GET    | `/api/orders/:userId`           | Fetch orders for a user                          |
+| POST   | `/api/email/order-confirmation` | Send order confirmation email (testing endpoint) |
 
----
+### ⚙️ System
 
-### 🧩 Supporting Services
-| Service | Description |
-|----------|-------------|
-| **Email Service** | Handles OTP and order confirmation emails |
-| **OTP Service** | Generates, stores, and verifies OTPs securely |
-| **Order Service** | Calculates total, stores order & order items |
+| Method | Endpoint      | Description           |
+| ------ | ------------- | --------------------- |
+| GET    | `/api/health` | Verify backend status |
 
 ---
 
-## 📘 API Documentation Overview
+## ⚡ Environment Setup
 
-| Category | Endpoint | Method | Description |
-|-----------|-----------|--------|-------------|
-| **System** | `/api/health` | GET | Check backend health |
-| **Auth** | `/api/auth/me` | GET | Get logged-in user details |
-| **Auth** | `/api/auth/send-otp` | POST | Send OTP via email |
-| **Auth** | `/api/auth/verify-otp` | POST | Verify OTP and authenticate user |
-| **Products** | `/api/products` | GET | Get all products |
-| **Products** | `/api/products/:id` | GET | Get product by ID |
-| **Orders** | `/api/orders` | GET | Get all orders (user-specific) |
-| **Orders** | `/api/orders/:id` | GET | Get specific order details |
-| **Orders** | `/api/orders` | POST | Create new order |
+### 1️⃣ Clone Repository
 
----
-
-## 🧠 Frontend Overview
-
-- **Authentication Flow:** Email-based OTP verification connected with backend  
-- **Product Pages:** Dynamic product listing + single product detail view  
-- **Cart System:** Managed using **Zustand** for lightweight state management  
-- **Checkout Flow:** Integrated with backend order APIs  
-- **Email Confirmation:** User receives confirmation after order placement  
-- **UI:** Built to match Figma design with TailwindCSS responsiveness  
-
----
-
-## 🚀 Deployment
-
-- **Backend:** Hosted on Render/Railway with environment variables for DB, SMTP, and JWT  
-- **Frontend:** Hosted on Vercel  
-- **Database:** PostgreSQL / MongoDB via Prisma ORM  
-
----
-
-## 🧾 TODOs
-
-- [ ] **Hero Newsletter:**  
-  - Add email input field in hero section  
-  - On submission → Send confirmation email saying  
-    _“You’re subscribed to the FOODZY newsletter!”_
-- [ ] Integrate reviews & ratings system  
-- [ ] Add product search & filter functionality  
-- [ ] Improve email templates (OTP + Order confirmation)
-
----
-
-## 🧑‍💻 Setup Instructions
-
-### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/<your-username>/foodzy.git
 cd foodzy
-````
+```
 
-### 2️⃣ Setup Environment Variables
+### 2️⃣ Install Dependencies
 
-Create a `.env` file in both **backend** and **frontend** folders.
+```bash
+# Frontend
+cd frontend
+npm install
 
-#### Example `.env` (Backend)
+# Backend
+cd ../backend
+npm install
+```
+
+### 3️⃣ Configure Environment Variables
+
+#### 🗂️ Backend `.env`
 
 ```bash
 DATABASE_URL=your_database_url
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=your_secret_key
 EMAIL_USER=your_email@example.com
 EMAIL_PASS=your_email_password
 ```
 
-### 3️⃣ Install Dependencies
+#### 🗂️ Frontend `.env.local`
 
 ```bash
-# backend
-cd backend
-npm install
-
-# frontend
-cd ../frontend
-npm install
+NEXT_PUBLIC_API_BASE_URL=https://your-backend-domain.com
 ```
 
-### 4️⃣ Run the Project
+### 4️⃣ Run Project Locally
 
 ```bash
-# backend
+# Backend
 npm run dev
 
-# frontend
+# Frontend
 npm run dev
 ```
 
 ---
 
-## 💡 Inspiration
+## 🌍 Deployment Links
 
-> "Good food is not just a craving — it’s an experience. FOODZY delivers that experience, from OTP login to order confirmation."
-
----
-
-## 🧑‍🏭 Contributors
-
-| Name      | Role                                                |
-| --------- | --------------------------------------------------- |
-| **Amaan** | Developer / Designer / Backend & Frontend Architect |
+| Component             | Platform         | URL                                                                      |
+| --------------------- | ---------------- | ------------------------------------------------------------------------ |
+| **Frontend**          | Vercel           | [https://foodzy.vercel.app](https://foodzy.vercel.app)                   |
+| **Backend**           | Render / Railway | [https://foodzy-api.onrender.com](https://foodzy-api.onrender.com)       |
+| **GitHub Repository** | GitHub           | [https://github.com/Mohfazam/FOODZY](https://github.com/Mohfazam/FOODZY) |
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** — feel free to use and build upon it.
+This project is licensed under the **MIT License**.
+It is intended solely for **evaluation and educational purposes**.
 
 ---
 
-⭐ **Star this repo** if you like it — it helps the project grow!
-
-```
-
----
-
-Want me to tailor this README with **your actual tech stack (MongoDB or PostgreSQL)**, **deployment platforms (Render/Vercel/etc.)**, and **your real GitHub repo link + logo banner** so it looks like a finished open-source README?
-```
+Would you like me to make this visually enhanced with emojis and section dividers (for a modern GitHub look) — or keep it clean and professional like this version?

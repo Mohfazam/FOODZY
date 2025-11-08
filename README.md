@@ -1,6 +1,6 @@
 # 🍔 FOODZY — Full Stack E-Commerce Platform
 
-- **Frontend:** [https://foodzy.vercel.app](https://foodzy.vercel.app)
+- **Frontend:** [https://foodzy.vercel.app](https://foodzy-delta.vercel.app)
 - **Backend:** [https://foodzy-api.onrender.com](https://foodzy-api.onrender.com)
 
 ## 🧭 Overview
@@ -251,4 +251,5 @@ It is intended solely for **evaluation and educational purposes**.
 ---
 
 Would you like me to make this visually enhanced with emojis and section dividers (for a modern GitHub look) — or keep it clean and professional like this version?
+
 

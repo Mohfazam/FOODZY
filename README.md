@@ -1,5 +1,8 @@
 # 🍔 FOODZY — Full Stack E-Commerce Platform
 
+- **Frontend:** [https://foodzy.vercel.app](https://foodzy.vercel.app)
+- **Backend:** [https://foodzy-api.onrender.com](https://foodzy-api.onrender.com)
+
 ## 🧭 Overview
 
 FOODZY is a full-stack e-commerce web application developed as part of the Cognito Innovations assignment.
@@ -248,3 +251,4 @@ It is intended solely for **evaluation and educational purposes**.
 ---
 
 Would you like me to make this visually enhanced with emojis and section dividers (for a modern GitHub look) — or keep it clean and professional like this version?
+

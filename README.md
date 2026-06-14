@@ -1,4 +1,4 @@
-# 🍔 FOODZY — Full Stack E-Commerce Platform
+# FOODZY — Full Stack E-Commerce Platform
 
 - **Frontend:** [https://foodzy-delta.vercel.app](https://foodzy-delta.vercel.app)
 - **Backend:** [https://foodzybackend.vercel.app](https://foodzybackend.vercel.app)
